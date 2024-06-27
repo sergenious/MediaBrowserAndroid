@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnSearch"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search"
+        tools:ignore="AppCompatResource"
+        android:actionViewClass="android.widget.SearchView" />
+
+    <item
+        android:id="@+id/btnAddShortcut"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add_shortcut"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnSlideshow"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_slideshow"
+        android:title="@string/slideshow"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnShowLabels"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_labels"
+        android:title="@string/file_labels"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnSort"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sorting"
+        tools:ignore="AppCompatResource" />
+
+</menu>

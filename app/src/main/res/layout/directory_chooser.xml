@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+	<GridView
+		android:id="@+id/directoryChooserList"
+		android:layout_width="fill_parent"
+		android:layout_height="0dip"
+		android:layout_weight="1"
+		android:scrollbarTrackVertical="@drawable/scrollbar"
+		android:scrollbarSize="4dip" />
+
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="1dp"
+		android:background="#ff808080"/>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/directory_current"
+		android:textSize="16sp"
+		android:textColor="#ffa0a0a0"
+		android:padding="8dip" />
+
+	<TextView
+		android:id="@+id/directoryChooserCurrent"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="20sp"
+		android:textColor="#ffffffff"
+		android:padding="8dip" />
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sergenious.mediabrowser"
+    android:versionCode="1"
+    android:versionName="1.0"
+    tools:targetApi="33"
+    tools:ignore="IconColors">
+    
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    
+    <supports-screens 
+		android:anyDensity="true"
+		android:largeScreens="true"
+		android:normalScreens="true"
+		android:resizeable="true"
+		android:smallScreens="true"
+		android:xlargeScreens="true" />
+
+    <application
+        android:label="@string/app_title"
+        android:icon="@drawable/ic_launcher"
+        android:localeConfig="@xml/locales_config"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/MediaBrowserTheme"
+        >
+
+        <activity
+            android:name="com.sergenious.mediabrowser.MediaActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|locale|keyboardHidden"
+            android:exported="true">
+            <intent-filter android:scheme="http" tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.sergenious.mediabrowser.VideoActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|locale|keyboardHidden"
+            android:exported="true">
+            <intent-filter android:scheme="http" tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.sergenious.mediabrowser.PanoramicActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|locale|keyboardHidden"
+            android:exported="true">
+            <intent-filter android:scheme="http" tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.google.panorama360+jpg" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.sergenious.mediabrowser.FileSizesActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|locale|keyboardHidden"
+            android:exported="true">
+        </activity>
+        
+        <activity 
+            android:name="com.sergenious.mediabrowser.FileBrowserActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|locale|keyboardHidden"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

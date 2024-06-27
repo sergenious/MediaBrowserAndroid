@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sergenious.mediabrowser.ui.GridViewItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/itemContainer"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="1dp">
+
+	<ImageView
+		android:id="@+id/itemIcon"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#404040"
+		android:scaleType="centerCrop"
+		android:layout_gravity="center|center_vertical"
+		android:contentDescription="@string/files" />
+
+	<TextView
+		android:id="@+id/itemFileName"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:gravity="center_horizontal|bottom"
+		android:textSize="14sp"
+		android:textColor="#ffffff"
+		android:ellipsize="middle"
+		android:layout_alignParentBottom="true"
+		android:background="@drawable/text_back_gradient" />
+
+	<ImageView
+		android:id="@+id/itemSelectedIcon"
+		android:visibility="gone"
+		android:src="@drawable/ic_check"
+		android:layout_width="28dip"
+		android:layout_height="28dip"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginRight="8dip"
+		android:layout_marginTop="8dip"
+		android:contentDescription="@string/selected"
+		tools:ignore="RtlHardcoded" />
+
+</com.sergenious.mediabrowser.ui.GridViewItemLayout>

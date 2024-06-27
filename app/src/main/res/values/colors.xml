@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pressed">#ff808080</color>
+    <color name="selected">#ff94e2ff</color>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnShare"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnSlideshow"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_slideshow"
+        android:title="@string/slideshow"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnDeleteShortcut"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_shortcut"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnFileSizes"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_file_sizes"
+        android:title="@string/file_sizes"
+        tools:ignore="AppCompatResource" />
+</menu>

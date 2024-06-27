@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style name="MediaBrowserTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:windowBackground">#ff000000</item>
+    </style>
+
+    <style name="MediaBrowserTheme.AlertDialog" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:background">@drawable/dialog_border</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:windowTitleStyle">@style/MediaBrowserTheme.AlertDialog.Title</item>
+    </style>
+
+    <style name="MediaBrowserTheme.AlertDialog.Title">
+        <item name="android:background">#ff000000</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textAppearance">@style/MediaBrowserTheme.AlertDialog.Title.Appearance</item>
+    </style>
+
+    <style name="MediaBrowserTheme.AlertDialog.Title.Appearance" parent="android:TextAppearance.WindowTitle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="MediaBrowserTheme.MediaDetailsLabel" parent="android:TextAppearance">
+        <item name="android:textColor">#ffa0a0a0</item>
+        <item name="android:padding">8dip</item>
+    </style>
+
+    <style name="MediaBrowserTheme.MediaDetailsValue" parent="android:TextAppearance">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:padding">8dip</item>
+    </style>
+
+</resources>
