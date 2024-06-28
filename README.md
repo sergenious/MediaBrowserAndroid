@@ -15,7 +15,7 @@ Media Browser includes a 360-degree panoramic viewer, with a rectilinear or sphe
 Media Browser does not contain ads and is and will always be completely free.
 
 Pre-built APK is available here:
-- <a href="release/MediaBrowser-1.0.apk">MediaBrowser-1.0.apk</a>
+- <a href="https://github.com/sergenious/MediaBrowserAndroid/releases/download/v1.0/MediaBrowser-1.0.apk">MediaBrowser-1.0.apk</a>
 
 ## 2. Directory listing
 
