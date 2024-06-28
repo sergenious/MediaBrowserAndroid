@@ -1,7 +1,1 @@
-Media Browser allows listing and viewing images and videos through directories (folders) on the internal and external storages on Android phones. Unlike the default stock or most 3rd party photo gallery applications, which display all the images as a flat list, sorted by date, Media Browser allows the user to select a specific directory, and display only its images. It also allows sorting by the file name, which is lacking in most of the other gallery applications.
-
-Media Browser displays full EXIF data of JPEG images, and contains a files sizes viewer.
-
-Media Browser includes a 360-degree panoramic viewer, with a rectilinear or spherical mode.
-
-Media Browser does not contain ads and is and will always be completely free.
+Media Browser lists and views images and videos through directories (folders)
