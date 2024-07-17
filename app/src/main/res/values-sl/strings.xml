@@ -191,6 +191,7 @@
     <string name="high">Visoko</string>
     <string name="high_gain_down">Visoko ojačenje navzdol</string>
     <string name="high_gain_up">Visoko ojačenje navzgor</string>
+    <string name="histogram">Histogram</string>
     <string name="horizontal">Vodoravno (normalno)</string>
     <string name="host_computer">Gostujoči računalnik</string>
     <string name="humidity">Vlažnost</string>
@@ -401,6 +402,7 @@
     <string name="version_year">Leto verzije</string>
     <string name="warm_white_fluorescent">Toplo-bela fluorescentna</string>
     <string name="water_depth">Vodna globina</string>
+    <string name="waveform">Valovna oblika</string>
     <string name="west">Zahodno</string>
     <string name="white_balance">Ravnotežje beline</string>
     <string name="white_fluorescent">Bela fluorescentna</string>

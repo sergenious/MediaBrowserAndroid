@@ -1,10 +1,13 @@
 package com.sergenious.mediabrowser.media;
 
+import android.graphics.Bitmap;
+
 import java.io.File;
 
 public interface AbstractMediaView {
     void destroy();
     File getFile();
+    Bitmap getBitmap();
     void setGlobalOfsX(float ofsX);
     void setVisible(boolean visible);
     void processTransients(double deltaTime);

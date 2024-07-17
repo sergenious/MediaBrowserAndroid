@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.sergenious.mediabrowser.media.AbstractMediaView;
+import com.sergenious.mediabrowser.media.HistogramView;
 import com.sergenious.mediabrowser.media.MediaImageView;
 import com.sergenious.mediabrowser.ui.DataGridLayout;
 import com.sergenious.mediabrowser.ui.DialogUtils;
@@ -140,6 +141,10 @@ public class MediaActivity extends Activity implements ScaleMoveGestureDetector.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.media_menu, menu);
+        File currentFile = (currentMediaFileIndex >= 0) && (currentMediaFileIndex < mediaFileList.size())
+            ? mediaFileList.get(currentMediaFileIndex) : null;
+        boolean isImageFile = (currentFile != null) && MediaUtils.isImageExtension(FileUtils.getFileExtension(currentFile));
+        menu.findItem(R.id.btnHistogram).setVisible(isImageFile);
         return true;
     }
 
@@ -148,6 +153,10 @@ public class MediaActivity extends Activity implements ScaleMoveGestureDetector.
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
+            return true;
+        }
+        if ((id == R.id.btnHistogram) && (currentMediaView != null)) {
+            HistogramView.openDialog(this, currentMediaView.getBitmap());
             return true;
         }
         if ((id == R.id.btnInfo) && (currentMediaView != null)) {
@@ -356,7 +365,7 @@ public class MediaActivity extends Activity implements ScaleMoveGestureDetector.
     private void updateFileState() {
         File file = currentMediaView.getFile();
         String title = file.getName();
-        if ((mediaFileList != null) && (mediaFileList.size() > 1)) {
+        if (mediaFileList.size() > 1) {
             title += " [" + (currentMediaFileIndex + 1) + "/" + mediaFileList.size() + "]";
         }
         setTitle(title);
@@ -378,6 +387,8 @@ public class MediaActivity extends Activity implements ScaleMoveGestureDetector.
             case PANO: btnAction.setImageResource(R.drawable.ic_360); break;
             case VIDEO: btnAction.setImageResource(R.drawable.ic_video); break;
         }
+
+        invalidateOptionsMenu();
     }
 
     private void launchAction(ActionType actionType, File file) {

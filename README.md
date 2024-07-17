@@ -8,7 +8,8 @@ gallery applications, which display all the images as a flat list, sorted by dat
 allows the user to select a specific directory, and display only its images. It also allows sorting 
 by the file name, which is lacking in most of the other gallery applications.
 
-Media Browser displays full EXIF data of JPEG images, and contains a files sizes viewer.
+Media Browser displays full EXIF data of JPEG images, and contains a files sizes viewer. 
+Media Browser can also display histogram and waveform of the images.
 
 Media Browser includes a 360-degree panoramic viewer, with a rectilinear or spherical mode.
 
@@ -60,25 +61,31 @@ Full EXIF information is displayed with the JPEG file details.
 
 <img src="readme_images/07-media-details.png" width="400" />
 
+Histogram and waveform of the image can be also displayed.
+
+<img src="readme_images/08-histogram.png" width="400" />
+
+<img src="readme_images/09-waveform.png" width="400" />
+
 When displaying panoramic images (360-degree or less), a marker is displayed over the image, 
 indicating the panoramic viewer option.
 
-<img src="readme_images/08-pano-media.png" width="400" />
+<img src="readme_images/10-pano-media.png" width="400" />
 
 Panoramic viewer in a spheric mode, when fully zoomed-out, displays a "tiny-planet". 
 
-<img src="readme_images/09-pano-viewer-sphere.png" width="400" />
+<img src="readme_images/11-pano-viewer-sphere.png" width="400" />
 
 Panoramic viewer in a rectilinear mode.
 
-<img src="readme_images/10-pano-viewer-rect.png" width="400" />
+<img src="readme_images/12-pano-viewer-rect.png" width="400" />
 
 ## 4. File sizes
 
 Similar to the "Disk usage" application, Media Browser can display the cumulative directory and file
 sizes of the selected directory, making finding big files easier.
 
-<img src="readme_images/11-file-sizes.png" width="400" />
+<img src="readme_images/13-file-sizes.png" width="400" />
 
 ## 5. Localization
 

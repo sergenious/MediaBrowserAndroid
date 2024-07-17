@@ -15,4 +15,11 @@
         android:icon="@drawable/ic_info"
         android:title="@string/details"
         tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/btnHistogram"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_histogram"
+        android:title="@string/histogram"
+        tools:ignore="AppCompatResource" />
 </menu>

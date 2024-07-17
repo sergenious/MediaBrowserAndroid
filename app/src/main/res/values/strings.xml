@@ -191,6 +191,7 @@
     <string name="high">High</string>
     <string name="high_gain_down">High gain down</string>
     <string name="high_gain_up">High gain up</string>
+    <string name="histogram">Histogram</string>
     <string name="horizontal">Horizontal (normal)</string>
     <string name="host_computer">Host computer</string>
     <string name="humidity">Humidity</string>
@@ -401,6 +402,7 @@
     <string name="version_year">Version year</string>
     <string name="warm_white_fluorescent">Warm White Fluorescent</string>
     <string name="water_depth">Water depth</string>
+    <string name="waveform">Waveform</string>
     <string name="west">West</string>
     <string name="white_balance">White balance</string>
     <string name="white_fluorescent">White Fluorescent</string>

@@ -65,6 +65,11 @@ public class MediaImageView extends ImageView implements AbstractMediaView {
     }
 
     @Override
+    public Bitmap getBitmap() {
+        return currentBitmap;
+    }
+
+    @Override
     public void setImageBitmap(Bitmap bitmap) {
         super.setImageBitmap(bitmap);
         if (currentBitmap != null) {
