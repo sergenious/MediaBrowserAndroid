@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sergenious.mediabrowser"
-    android:versionCode="1"
+    android:versionCode="100100"
     android:versionName="1.1"
     tools:targetApi="33"
     tools:ignore="IconColors">
