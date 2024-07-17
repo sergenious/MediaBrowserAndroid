@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sergenious.mediabrowser"
     android:versionCode="1"
-    android:versionName="1.0"
+    android:versionName="1.1"
     tools:targetApi="33"
     tools:ignore="IconColors">
     
@@ -29,8 +29,7 @@
         android:icon="@drawable/ic_launcher"
         android:localeConfig="@xml/locales_config"
         android:requestLegacyExternalStorage="true"
-        android:theme="@style/MediaBrowserTheme"
-        >
+        android:theme="@style/MediaBrowserTheme">
 
         <activity
             android:name="com.sergenious.mediabrowser.MediaActivity"
