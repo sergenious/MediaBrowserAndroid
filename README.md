@@ -72,7 +72,7 @@ indicating the panoramic viewer option.
 
 <img src="readme_images/10-pano-media.png" width="400" />
 
-Panoramic viewer in a spheric mode, when fully zoomed-out, displays a "tiny-planet". 
+Panoramic viewer in a spherical mode, when fully zoomed-out, displays a "tiny-planet". 
 
 <img src="readme_images/11-pano-viewer-sphere.png" width="400" />
 
