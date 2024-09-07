@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -143,7 +142,7 @@ public class ExifReader {
 				}
 				else if ((tag == ExifTag.GPS_TIMESTAMP) && (value instanceof double[]) && (((double[]) value).length >= 3)) {
 					double[] timestamp = (double[]) value;
-					value = LocalTime.of((int) timestamp[0], (int) timestamp[1], (int) timestamp[2]);
+					value = (int) timestamp[0] + ":" + (int) timestamp[1] + ":" + (int) timestamp[2];
 				}
 
 				if ((value != null) && (tag.getLabelId() != 0)) {
@@ -155,7 +154,6 @@ public class ExifReader {
 				}
 			}
 		}
-
 
 		fileInput.seek(saveFileOffset);
 	}
