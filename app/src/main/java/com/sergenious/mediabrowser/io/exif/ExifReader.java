@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,6 +22,10 @@ import java.util.TreeMap;
 
 public class ExifReader {
 	private static final String EXIF = "Exif";
+	private static final byte[] UNDEFINED_TEXT = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+	private static final byte[] ASCII = {0x41, 0x53, 0x43, 0x49, 0x49, 0x00, 0x00, 0x00};
+	private static final byte[] JIS = {0x4A, 0x49, 0x53, 0x00, 0x00, 0x00, 0x00, 0x00};
+	private static final byte[] UNICODE = {0x55, 0x4E, 0x49, 0x43, 0x4F, 0x44, 0x45, 0x00};
 
 	public static Map<ExifTag, Object> extract(File file, Collection<ExifTag> filter) throws IOException {
 		Map<ExifTag, Object> exifMetadata = new TreeMap<>(Comparator.comparingInt(ExifTag::getSortOrder));
@@ -124,20 +129,26 @@ public class ExifReader {
 					: convertValue(fieldType, byteOrder, buffer, length, intValue);
 
 				if ((value instanceof byte[])
-					&& ((tag == ExifTag.EXIF_VERSION) || (tag == ExifTag.FLASHPIX_VERSION)
-						|| (tag == ExifTag.USER_COMMENT) || (tag == ExifTag.INTEROP_VERSION))) {
+					&& ((tag == ExifTag.EXIF_VERSION) || (tag == ExifTag.FLASHPIX_VERSION) || (tag == ExifTag.INTEROP_VERSION))) {
 
 					value = createString(buffer, length);
 				}
 
+				if ((fieldType == ExifFieldType.UNDEFINED) && (value instanceof byte[])) {
+					value = decodeUndefinedValue(value);
+				}
+
 				// interpreting some specific tags
-				if ((tag == ExifTag.SHUTTER_SPEED) && (value instanceof Double)) {
+				if ((tag == ExifTag.USER_COMMENT) && !(value instanceof String)) { // corrupted comment?
+					value = "<bin>"; // probably binary data
+				}
+				else if ((tag == ExifTag.SHUTTER_SPEED) && (value instanceof Double)) {
 					value = Math.pow(2, - (Double) value); // APEX value
 				}
-				if (((tag == ExifTag.APERTURE) || (tag == ExifTag.MAX_APERTURE)) && (value instanceof Double)) {
+				else if (((tag == ExifTag.APERTURE) || (tag == ExifTag.MAX_APERTURE)) && (value instanceof Double)) {
 					value = Math.pow(2, (Double) value / 2.0); // APEX value
 				}
-				if (((tag == ExifTag.GPS_LATITUDE) || (tag == ExifTag.GPS_LONGITUDE)) && (value instanceof double[])) {
+				else if (((tag == ExifTag.GPS_LATITUDE) || (tag == ExifTag.GPS_LONGITUDE)) && (value instanceof double[])) {
 					value = ExifDegree.fromValues((double[]) value);
 				}
 				else if ((tag == ExifTag.GPS_TIMESTAMP) && (value instanceof double[]) && (((double[]) value).length >= 3)) {
@@ -156,6 +167,28 @@ public class ExifReader {
 		}
 
 		fileInput.seek(saveFileOffset);
+	}
+
+	private static Object decodeUndefinedValue(Object value) {
+		byte[] byteArrayValue = (byte[]) value;
+		if (byteArrayValue.length >= 8) {
+			try {
+				byte[] prefix = Arrays.copyOfRange(byteArrayValue, 0, 8);
+				if (Arrays.equals(prefix, UNDEFINED_TEXT) || Arrays.equals(prefix, ASCII)) {
+					// NOTE: ASCII is a subset of UTF-8, so it will work properly
+					// "Undefined text" is left for the interpretation, but the safest is to read is as UTF-8
+					return new String(byteArrayValue, 8, byteArrayValue.length - 8, "UTF-8");
+				}
+				else if (Arrays.equals(prefix, UNICODE)) {
+					return new String(byteArrayValue, 8, byteArrayValue.length - 8, "UTF-16BE");
+				}
+				// TODO!!! ISO-2022-JP / JIS X 0208
+			}
+			catch (UnsupportedEncodingException e) {
+				Log.e(Constants.appNameInternal, "Unsupported charset", e);
+			}
+		}
+		return value;
 	}
 
 	private static Object convertValue(ExifFieldType fieldType, ExifByteOrder byteOrder,

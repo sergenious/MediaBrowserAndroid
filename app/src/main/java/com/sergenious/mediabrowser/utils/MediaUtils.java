@@ -205,6 +205,9 @@ public class MediaUtils {
 			}
 
 			Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+			if (bitmap == null) {
+				return null;
+			}
 
 			if (useExifOrientation) {
 				bitmap = fixImageByExifOrientation(bitmap, sizeAndOrientation.second);

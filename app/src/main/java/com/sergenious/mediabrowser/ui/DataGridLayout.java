@@ -65,7 +65,11 @@ public class DataGridLayout extends ScrollView {
             textView.setText((Spanned) value);
         }
         else {
-            textView.setText(value.toString());
+            String content = value.toString();
+            content = content.replace("\r\n", System.getProperty("line.separator"));
+            content = content.replace("\n", System.getProperty("line.separator"));
+            content = content.replace("\r", System.getProperty("line.separator"));
+            textView.setText(content);
         }
     }
 }
