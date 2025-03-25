@@ -172,21 +172,16 @@ public class ExifReader {
 	private static Object decodeUndefinedValue(Object value) {
 		byte[] byteArrayValue = (byte[]) value;
 		if (byteArrayValue.length >= 8) {
-			try {
-				byte[] prefix = Arrays.copyOfRange(byteArrayValue, 0, 8);
-				if (Arrays.equals(prefix, UNDEFINED_TEXT) || Arrays.equals(prefix, ASCII)) {
-					// NOTE: ASCII is a subset of UTF-8, so it will work properly
-					// "Undefined text" is left for the interpretation, but the safest is to read is as UTF-8
-					return new String(byteArrayValue, 8, byteArrayValue.length - 8, "UTF-8");
-				}
-				else if (Arrays.equals(prefix, UNICODE)) {
-					return new String(byteArrayValue, 8, byteArrayValue.length - 8, "UTF-16BE");
-				}
-				// TODO!!! ISO-2022-JP / JIS X 0208
+			byte[] prefix = Arrays.copyOfRange(byteArrayValue, 0, 8);
+			if (Arrays.equals(prefix, UNDEFINED_TEXT) || Arrays.equals(prefix, ASCII)) {
+				// NOTE: ASCII is a subset of UTF-8, so it will work properly
+				// "Undefined text" is left for the interpretation, but the safest is to read is as UTF-8
+				return new String(byteArrayValue, 8, byteArrayValue.length - 8, StandardCharsets.UTF_8);
 			}
-			catch (UnsupportedEncodingException e) {
-				Log.e(Constants.appNameInternal, "Unsupported charset", e);
+			else if (Arrays.equals(prefix, UNICODE)) {
+				return new String(byteArrayValue, 8, byteArrayValue.length - 8, StandardCharsets.UTF_16BE);
 			}
+			// TODO!!! ISO-2022-JP / JIS X 0208
 		}
 		return value;
 	}

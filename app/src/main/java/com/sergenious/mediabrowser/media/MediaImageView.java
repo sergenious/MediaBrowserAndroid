@@ -195,7 +195,7 @@ public class MediaImageView extends ImageView implements AbstractMediaView {
         new Thread(() -> {
             int maxImageSize = isFull ? Constants.MAX_IMAGE_SIZE : Constants.PREVIEW_IMAGE_SIZE;
             final Pair<Pair<Size, Integer>, Bitmap> imageData = MediaUtils.loadImage(file, maxImageSize, maxImageSize, isFull, false);
-            if (imageData != null) {
+            if ((imageData != null) && (imageData.second != null)) {
                 imageExifOrientation = imageData.first.second;
 
                 handler.post(() -> {
